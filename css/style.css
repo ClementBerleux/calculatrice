@@ -1,0 +1,156 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0A0A0A;
+    font-family: sans-serif;
+    color: #C0C0C0;
+    font-size: 2rem;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.calculette {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "div mult moins plus"
+        "sept huit neuf plus"
+        "quatre cinq six egal"
+        "un deux trois egal"
+        "zero zero zero point"
+        "resultat resultat resultat resultat"
+        "raz raz del del";
+    margin: 1rem 0;
+    padding: 1rem;
+    box-shadow: 0 0 0 0.2em #C0C0C055;
+    border-radius: 0.3em;
+}
+
+button {
+    position: relative;
+    padding: 1rem 1rem;
+    margin: 0.1rem;
+    font-size: 2.5rem;
+    background-color: #C0C0C0;
+    border-radius: 0.3em;
+    font-weight: bold;
+    z-index: 1;
+}
+
+button:hover {
+    background-color: #C0C0C0AA;
+}
+
+/* button::before {
+    position: absolute;
+    content: "bouton";
+    background-color: red;
+    color: red;
+    scale: 1.1;
+    filter: blur(0.1em);
+    z-index: 0;
+} */
+
+#div {
+    grid-area: div;
+}
+
+#mult {
+    grid-area: mult;
+}
+
+#moins {
+    grid-area: moins;
+}
+
+#plus {
+    grid-area: plus;
+}
+
+#egal {
+    grid-area: egal;
+}
+
+#point {
+    grid-area: point;
+}
+
+#raz {
+    grid-area: raz;
+}
+
+#del {
+    grid-area: del;
+}
+
+#zero {
+    grid-area: zero;
+}
+
+#un {
+    grid-area: un;
+}
+
+#deux {
+    grid-area: deux;
+}
+
+#trois {
+    grid-area: trois;
+}
+
+#quatre {
+    grid-area: quatre;
+}
+
+#cinq {
+    grid-area: cinq;
+}
+
+#six {
+    grid-area: six;
+}
+
+#sept {
+    grid-area: sept;
+}
+
+#huit {
+    grid-area: huit;
+}
+
+#neuf {
+    grid-area: neuf;
+}
+
+#resultat {
+    margin: 0.5rem 0;
+}
+
+input {
+    grid-area: resultat;
+    background-color: #2A2A2A;
+    border: 1px solid #C0C0C0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #C0C0C0;
+    border-radius: 0.5em;
+    text-align: center;
+    padding: 0.8rem;
+}
