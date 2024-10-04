@@ -32,20 +32,22 @@ function calcul(operation = "") {
 }
 
 function handleCalcul() {
-    let operation = document.getElementById('resultat').value;
+    let operation = document.getElementById('resultat').innerText;
     operation = operation.replaceAll(" ", "");
     if (operation.length > 2) {
         if (operation.match(/[0-9.]$/)) {
-            const index = operation.indexOf('=');
+            let index = operation.indexOf('=');
             if (index > 0) operation = operation.substring(index + 1);
 
-            const operationAffichee = operation;
+            let operationAffichee = operation;
             if (operation[0] == "-") operation = "0" + operation;
             operation = operation.replaceAll("-", "+-");
             if (operation[0] == "+") operation[0] = "0";
-            // console.log(operation);
 
-            document.getElementById('resultat').value = operationAffichee + " = " + calcul(operation);
+            operationAffichee += " = " + calcul(operation);
+            if (operationAffichee.match(/[=][0-9' ']*[.]/)) operationAffichee = operationAffichee.substring(0, operationAffichee.lastIndexOf('.') + 3);
+
+            document.getElementById('resultat').innerText = operationAffichee;
         }
     }
 }
@@ -66,7 +68,7 @@ const touchesNumeriques = [
 ];
 
 for (let i = 0; i < touchesNumeriques.length; i++) {
-    document.getElementById(touchesNumeriques[i].nom).addEventListener("click", () => document.getElementById('resultat').value += touchesNumeriques[i].affichage);
+    document.getElementById(touchesNumeriques[i].nom).addEventListener("click", () => document.getElementById('resultat').innerText += touchesNumeriques[i].affichage);
 }
 
 const touchesOperations = [
@@ -77,7 +79,7 @@ const touchesOperations = [
 
 for (let i = 0; i < touchesOperations.length; i++) {
     document.getElementById(touchesOperations[i].nom).addEventListener("click", () => {
-        let affichage = document.getElementById('resultat').value;
+        let affichage = document.getElementById('resultat').innerText;
         if (affichage.length > 0) {
             if (affichage.match(/['+''\-''\*''\/']$/)) {
                 affichage = affichage.substring(0, affichage.length - 1) + touchesOperations[i].affichage;
@@ -87,13 +89,13 @@ for (let i = 0; i < touchesOperations.length; i++) {
                 if (index > 0) affichage = affichage.substring(index + 1);
                 affichage += touchesOperations[i].affichage;
             }
-            document.getElementById('resultat').value = affichage;
+            document.getElementById('resultat').innerText = affichage;
         }
     })
 }
 
 document.getElementById("moins").addEventListener("click", () => {
-    let affichage = document.getElementById('resultat').value;
+    let affichage = document.getElementById('resultat').innerText;
     if (affichage.length > 0) {
         if (affichage.match(/['+''\*''\/']$/)) {
             affichage = affichage.substring(0, affichage.length - 1) + "-";
@@ -103,32 +105,32 @@ document.getElementById("moins").addEventListener("click", () => {
             if (index > 0) affichage = affichage.substring(index + 1);
             affichage += "-";
         }
-        document.getElementById('resultat').value = affichage;
+        document.getElementById('resultat').innerText = affichage;
     }
-    else document.getElementById('resultat').value = "-";
+    else document.getElementById('resultat').innerText = "-";
 })
 
 document.getElementById("point").addEventListener("click", () => {
-    let affichage = document.getElementById('resultat').value;
+    let affichage = document.getElementById('resultat').innerText;
     if (affichage.length > 0) {
-        if (!affichage.match(/[\.][0-9]*$/)) document.getElementById('resultat').value = affichage + ".";
+        if (!affichage.match(/[\.][0-9]*$/)) document.getElementById('resultat').innerText = affichage + ".";
     }
-    else document.getElementById('resultat').value = ".";
+    else document.getElementById('resultat').innerText = ".";
 })
 
 document.getElementById("raz").addEventListener("click", () => {
-    document.getElementById('resultat').value = "";
+    document.getElementById('resultat').innerText = "";
 })
 
 document.getElementById("del").addEventListener("click", () => {
-    let affichage = document.getElementById('resultat').value;
+    let affichage = document.getElementById('resultat').innerText;
 
     if (affichage.length > 1) {
         if (affichage.match(/[=]/)) {
             const index = affichage.indexOf('=');
             affichage = affichage.substring(index + 1);
         }
-        document.getElementById('resultat').value = affichage.substring(0, affichage.length - 1);
+        document.getElementById('resultat').innerText = affichage.substring(0, affichage.length - 1);
     }
-    else document.getElementById('resultat').value = "";
+    else document.getElementById('resultat').innerText = "";
 })

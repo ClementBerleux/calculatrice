@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #0A0A0A;
+    background-color: #2A2A2A;
     font-family: sans-serif;
     color: #C0C0C0;
     font-size: 2rem;
@@ -25,6 +25,56 @@ h1 {
     text-align: center;
 }
 
+.ecran {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        "titre titre"
+        "resultat resultat"
+        "raz del";
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #020617AA;
+    box-shadow: -2px -2px 5px #FFFFFF55,
+        5px 5px 5px #00000055;
+    border-radius: 0.3em;
+    min-width: 600px;
+}
+
+#titreEcran {
+    position: relative;
+    grid-area: titre;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #titreEcran::after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom right, rgb(255, 0, 255) 25%, blue, rgb(255, 0, 255) 75%);
+    border-radius: 0.5em;
+    filter: blur(0.1em);
+    z-index: -1;
+} */
+
+#resultat {
+    grid-area: resultat;
+    height: 5ch;
+    background-color: #2A2A2A;
+    border: 1px solid #C0C0C0;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #C0C0C0;
+    border-radius: 0.5em;
+    text-align: center;
+    margin: 10px;
+    padding: 0.8rem;
+}
+
 .calculette {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -33,39 +83,33 @@ h1 {
         "sept huit neuf plus"
         "quatre cinq six egal"
         "un deux trois egal"
-        "zero zero zero point"
-        "resultat resultat resultat resultat"
-        "raz raz del del";
-    margin: 1rem 0;
+        "zero zero zero point";
+    margin: 1rem;
     padding: 1rem;
-    box-shadow: 0 0 0 0.2em #C0C0C055;
+    background-color: #020617AA;
+    box-shadow: -2px -2px 5px #FFFFFF55,
+        5px 5px 5px #00000055;
     border-radius: 0.3em;
+    width: 400px;
 }
 
 button {
-    position: relative;
-    padding: 1rem 1rem;
-    margin: 0.1rem;
-    font-size: 2.5rem;
-    background-color: #C0C0C0;
+    display: block;
+    padding: 1rem 2rem;
+    margin: 0.3rem;
+    font-size: 2rem;
+    background-color: #1e293b;
+    color: #C0C0C0;
+    border: none;
     border-radius: 0.3em;
     font-weight: bold;
-    z-index: 1;
+    box-shadow: -1px -1px 2px #FFFFFF88,
+        2px 2px 5px #000000AA;
 }
 
 button:hover {
-    background-color: #C0C0C0AA;
+    background-color: #1e293bAA;
 }
-
-/* button::before {
-    position: absolute;
-    content: "bouton";
-    background-color: red;
-    color: red;
-    scale: 1.1;
-    filter: blur(0.1em);
-    z-index: 0;
-} */
 
 #div {
     grid-area: div;
@@ -137,20 +181,4 @@ button:hover {
 
 #neuf {
     grid-area: neuf;
-}
-
-#resultat {
-    margin: 0.5rem 0;
-}
-
-input {
-    grid-area: resultat;
-    background-color: #2A2A2A;
-    border: 1px solid #C0C0C0;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #C0C0C0;
-    border-radius: 0.5em;
-    text-align: center;
-    padding: 0.8rem;
 }
