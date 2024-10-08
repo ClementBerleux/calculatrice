@@ -7,17 +7,20 @@
 }
 
 body {
-    background-color: #2A2A2A;
+    background-color: #020617;
     font-family: sans-serif;
     color: #C0C0C0;
     font-size: 2rem;
-}
-
-.container {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+}
+
+@media (max-width: 1000px) {
+    body {
+        flex-direction: column;
+    }
 }
 
 h1 {
@@ -32,48 +35,71 @@ h1 {
         "titre titre"
         "resultat resultat"
         "raz del";
-    margin: 1rem;
     padding: 1rem;
-    background-color: #020617AA;
-    box-shadow: -2px -2px 5px #FFFFFF55,
-        5px 5px 5px #00000055;
-    border-radius: 0.3em;
-    min-width: 600px;
+    min-width: 580px;
 }
 
 #titreEcran {
     position: relative;
+    background: linear-gradient(to top right, cyan, blue);
     grid-area: titre;
     text-align: center;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: transparent;
+    background-clip: text;
+}
+
+#titreEcran::after {
+    position: absolute;
+    content: '';
+    width: 110%;
+    height: 110%;
+    z-index: -1;
+}
+
+#backgroundResultat {
+    position: relative;
+    grid-area: resultat;
+    height: 5ch;
+    background: linear-gradient(to bottom right, cyan 25%, blue, cyan 75%);
+    border-radius: 0.5em;
+    margin: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* #titreEcran::after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom right, rgb(255, 0, 255) 25%, blue, rgb(255, 0, 255) 75%);
-    border-radius: 0.5em;
-    filter: blur(0.1em);
-    z-index: -1;
-} */
-
 #resultat {
-    grid-area: resultat;
-    height: 5ch;
-    background-color: #2A2A2A;
-    border: 1px solid #C0C0C0;
-    font-size: 2rem;
+    position: relative;
+    height: 95%;
+    width: 99%;
+    background-color: #020617;
     font-weight: bold;
-    color: #C0C0C0;
+    color: cyan;
     border-radius: 0.5em;
     text-align: center;
-    margin: 10px;
+    margin: 2px;
     padding: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* overflow: clip;
+    overflow-clip-margin: 2px; */
 }
+
+/* #resultat::after {
+    position: absolute;
+    content: '';
+    width: 1200px;
+    height: 150px;
+    background: linear-gradient(to bottom right, rgb(255, 0, 255) 25%, blue, rgb(255, 0, 255) 75%);
+    opacity: 1;
+    z-index: -1;
+} */
 
 .calculette {
     display: grid;
@@ -84,12 +110,6 @@ h1 {
         "quatre cinq six egal"
         "un deux trois egal"
         "zero zero zero point";
-    margin: 1rem;
-    padding: 1rem;
-    background-color: #020617AA;
-    box-shadow: -2px -2px 5px #FFFFFF55,
-        5px 5px 5px #00000055;
-    border-radius: 0.3em;
     width: 400px;
 }
 
@@ -97,18 +117,26 @@ button {
     display: block;
     padding: 1rem 2rem;
     margin: 0.3rem;
-    font-size: 2rem;
-    background-color: #1e293b;
+    font-size: inherit;
+    background-color: #1e2035;
     color: #C0C0C0;
     border: none;
     border-radius: 0.3em;
     font-weight: bold;
     box-shadow: -1px -1px 2px #FFFFFF88,
         2px 2px 5px #000000AA;
+    transition: opacity 0.2s;
 }
 
 button:hover {
-    background-color: #1e293bAA;
+    box-shadow: inset -1px -1px 1px #FFFFFF88;
+    opacity: 0.8;
+}
+
+p {
+    background: radial-gradient(cyan, blue);
+    background-clip: text;
+    color: transparent;
 }
 
 #div {
@@ -138,6 +166,7 @@ button:hover {
 #raz {
     grid-area: raz;
 }
+
 
 #del {
     grid-area: del;
